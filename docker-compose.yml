@@ -1,0 +1,17 @@
+version: '2'
+services:
+  authdcos:
+    build:
+          authdcos
+    command:
+          serve
+    network_mode:
+          host
+    depends_on:
+          - zookeeper
+
+  zookeeper:
+    image:
+          jplock/zookeeper
+    network_mode:
+          host

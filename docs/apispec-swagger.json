@@ -1,0 +1,111 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.0",
+    "title": "DC/OS auth API"
+  },
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/config": {
+      "get": {
+        "summary": "Retrieve config.",
+        "description": "Retrieve config.",
+        "responses": {
+          "200": {
+            "description": "Success.",
+          }
+        }
+      },
+     "put": {
+       "summary": "Create config.",
+       "description": "Create config.",
+       "responses": {
+         "201": {
+           "description": "Config created.",
+         }
+       }
+     },
+    "patch": {
+       "summary": "Update config",
+       "description": "Update config",
+       "responses": {
+         "204": {
+           "description": "No content.",
+         }
+       }
+    }
+   },
+    "/users": {
+      "get": {
+        "summary": "Retrieve all users.",
+        "description": "Retrieve Users.",
+        "responses": {
+          "200": {
+            "description": "Success.",
+          }
+        }
+      }
+    },
+    "/users/{uid}": {
+      "get": {
+        "summary": "Get single user.",
+        "description": "Get specific `User` object.",
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "description": "The id of the user to delete.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success.",
+          }
+        }
+      },
+      "put": {
+        "summary": "Create user.",
+        "description": "Create user.",
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "description": "The id of the user to delete.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User created."
+          },
+          "409": {
+            "description": "User already exists."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete user.",
+        "description": "Delete user.",
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "description": "The id of the user to delete.",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content."
+          }
+        }
+      }
+    },
+  }
+}
