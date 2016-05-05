@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 
 	"golang.org/x/net/context"
@@ -89,6 +90,7 @@ func handleLogin(ctx context.Context, w http.ResponseWriter, r *http.Request) *c
 	if !ok || err != nil {
 		return common.NewHttpError("invalid email claim", http.StatusBadRequest)
 	}
+	uid = strings.ToLower(uid)
 
 	c := ctx.Value("zk").(*zk.Conn)
 
