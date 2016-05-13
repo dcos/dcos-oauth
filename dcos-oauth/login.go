@@ -79,7 +79,7 @@ func handleLogin(ctx context.Context, w http.ResponseWriter, r *http.Request) *c
 
 	// check for Auth0 email verification
 	if verified, ok := claims["email_verified"]; ok {
-		if b, ok := verified.(bool); ok && !b {
+		if b, ok := verified.(bool); !ok || !b {
 			log.Printf("email not verified")
 			return common.NewHttpError("email not verified", http.StatusBadRequest)
 		}
