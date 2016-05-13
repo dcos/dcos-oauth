@@ -16,15 +16,17 @@ func TestUsers(t *testing.T) {
 
 	exampleEmail := "test@domain.com"
 	encoded := url.QueryEscape(exampleEmail)
-	// encoded := base64.StdEncoding.EncodeToString([]byte(exampleEmail))
 
-	getResponse := "{\"array\":[{\"uid\":\"" + exampleEmail + "\",\"description\":\"" + exampleEmail + "\",\"is_remote\":false}]}"
+	getResponse := "{\"array\":[{\"uid\":\"" + exampleEmail + "\",\"description\":\"" + exampleEmail + "\"}]}"
 
 	bodyGetUsers, err := send("GET", "/acs/api/v1/users", 200, nil)
 	assert.NoError(err)
 	assert.Equal("{\"array\":null}", bodyGetUsers, "Users list should be empty")
 
-	_, err = send("PUT", "/acs/api/v1/users/"+encoded, 201, nil)
+	user := struct {
+		Uid string `json:"uid"`
+	}{exampleEmail}
+	_, err = send("PUT", "/acs/api/v1/users/"+encoded, 201, user)
 	assert.NoError(err)
 
 	bodyGetUsers, err = send("GET", "/acs/api/v1/users", 200, nil)
@@ -33,7 +35,7 @@ func TestUsers(t *testing.T) {
 
 	bodyGetUser, err := send("GET", "/acs/api/v1/users/"+encoded, 200, nil)
 	assert.NoError(err)
-	assert.Equal("{\"uid\":\""+exampleEmail+"\",\"description\":\""+exampleEmail+"\",\"is_remote\":false}", bodyGetUser, "User should return address: test@domain.com")
+	assert.Equal("{\"uid\":\""+exampleEmail+"\",\"description\":\""+exampleEmail+"\"}", bodyGetUser, "User should return address: test@domain.com")
 
 	_, err = send("DELETE", "/acs/api/v1/users/"+encoded, 204, nil)
 	assert.NoError(err)
