@@ -30,7 +30,7 @@ func NewHttpError(description string, status int) *HttpError {
 }
 
 var (
-	emailRe = regexp.MustCompile(`^[a-z0-9“”._%+-]+@(?:[a-z0-9-\[]+\.)+[a-z0-9-\]]{2,}$`)
+	emailRe = regexp.MustCompile(`^[a-zA-Z0-9“”._%+-]+@(?:[a-zA-Z0-9-\[]+\.)+[a-zA-Z0-9-\]]{2,}$`)
 )
 
 func ValidateEmail(email string) bool {
