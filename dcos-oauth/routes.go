@@ -16,6 +16,8 @@ var routes = map[string]map[string]common.Handler{
 		"/acs/api/v1/auth/logout":       handleLogout,
 		"/acs/api/v1/users":             getUsers,
 		"/acs/api/v1/users/{uid:.*}":    getUser,
+		"/acs/api/v1/auth/login": 	 handleLogin,
+		"/oauth2/callback":     handleCallback,
 		"/acs/api/v1/groups":            getGroups,
 	},
 	"DELETE": {
