@@ -49,7 +49,7 @@ func TestGetUsers(t *testing.T) {
 	assert.Nil(getUsers(ctx, w, r), "getUsers with valid parameters")
 
 	respBody, _ := ioutil.ReadAll(w.Body)
-	assert.Equal("{\"array\":[{\"uid\":\"\",\"description\":\"\",\"is_remote\":false}]}\n", string(respBody), "getUsers body")
+	assert.Equal("{\"array\":[{}]}\n", string(respBody), "getUsers body")
 }
 
 func TestValidateEmail(t *testing.T) {
