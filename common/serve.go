@@ -39,7 +39,7 @@ func CreateParents(c IZk, path string, data []byte) error {
 }
 
 func initZk(address, path string) (*zk.Conn, error) {
-	czk, _, err := zk.Connect([]string{address}, time.Second)
+	czk, _, err := zk.Connect([]string{address}, 60*time.Second)
 	if err != nil {
 		return nil, err
 	}
