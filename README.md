@@ -2,7 +2,7 @@
 
 ## News
 
-11/14/2016: Mesosphere is working on open sourcing parts of our Enterprise DC/OS IAM service, including support for OpenID Connect. This will be replacing dcos-oauth in its entirety. Looking forward to working with everyone on that as soon as it has been released. Current target is early Q1 2017.
+11/14/2016: Mesosphere is working on open sourcing parts of our Enterprise DC/OS IAM service, including support for OpenID Connect. This will be replacing dcos-oauth in its entirety. Looking forward to working with everyone on that as soon as it has been released. 
 
 ## Installation
 
